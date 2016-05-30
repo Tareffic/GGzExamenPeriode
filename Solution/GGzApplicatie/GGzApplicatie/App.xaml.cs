@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GGzApplicatie.View;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -7,6 +8,7 @@ using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Storage;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -33,10 +35,26 @@ namespace GGzApplicatie
         /// </summary>
         public App()
         {
+            //CopyDatabase();
             this.InitializeComponent();
             this.Suspending += this.OnSuspending;
         }
+        private async void CopyDatabase() 
+        { 
+            bool isDatabaseExisting = false; 
 
+            try 
+            { 
+                StorageFile storageFile = await ApplicationData.Current.LocalFolder.GetFileAsync("GGzDB.db");
+                isDatabaseExisting = true; } catch { isDatabaseExisting = false; 
+                } 
+
+            if (!isDatabaseExisting)
+                { 
+                StorageFile databaseFile = await Package.Current.InstalledLocation.GetFileAsync("GGzDB.db");
+                    await databaseFile.CopyAsync(ApplicationData.Current.LocalFolder);
+                } 
+        }
         /// <summary>
         /// Invoked when the application is launched normally by the end user.  Other entry points
         /// will be used when the application is launched to open a specific file, to display
@@ -91,7 +109,7 @@ namespace GGzApplicatie
                 // When the navigation stack isn't restored navigate to the first page,
                 // configuring the new page by passing required information as a navigation
                 // parameter
-                if (!rootFrame.Navigate(typeof(MainPage), e.Arguments))
+                if (!rootFrame.Navigate(typeof(HomePage), e.Arguments))
                 {
                     throw new Exception("Failed to create initial page");
                 }
