@@ -8,7 +8,16 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid>
+    <Grid Background="White">
+        <Image x:Name="image" Source="Assets/GGz_Breburg_Logo.jpg" Margin="0,0,0,475"/>
+        <TextBox x:Name="textBox" Margin="67,242,67,362" TextWrapping="Wrap" Text="" VerticalAlignment="Stretch" Width="266" BorderBrush="#FF281C6E" Foreground="#FF281C6E" BorderThickness="1.5,1" SelectionHighlightColor="#FF281C6E" Background="White"/>
+        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="142,224,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
+        <TextBox x:Name="textBox_Copy" Margin="67,0,67,270" TextWrapping="Wrap" Text="" VerticalAlignment="Bottom" Width="266" BorderBrush="#FF281C6E" Foreground="#FF281C6E" BorderThickness="1.5,1" SelectionHighlightColor="#FF281C6E"/>
+        <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" Margin="67,210,0,0" TextWrapping="Wrap" Text="Gebruikersnaam" VerticalAlignment="Top" Height="32" Width="266" Foreground="#FFEE7114" FontSize="26.667"/>
+        <TextBlock x:Name="textBlock1_Copy" Margin="67,297,67,0" TextWrapping="Wrap" Text="Behandelaars Code" VerticalAlignment="Top" Height="32" Width="266" Foreground="#FFEE7114" FontSize="26.667"/>
+        <TextBlock x:Name="textBlock2" Margin="67,518,67,0" TextWrapping="Wrap" Text="Nog geen gebruikersnaam? Maak er hier een aan." VerticalAlignment="Top" Height="45" Width="266" Foreground="#FF281C6E" FontSize="18.667"/>
+        <Button x:Name="button" Content="Registreren" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="67,0,0,24" Width="266" Height="58" Background="#FFEE7114" BorderBrush="#FFEE7114"/>
+        <Button x:Name="button_Copy" Content="Vragenlijst Starten" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="67,0,0,201" Width="266" Height="58" Background="#FFEE7114" BorderBrush="#FFEE7114"/>
 
     </Grid>
 </Page>
