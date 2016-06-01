@@ -13,8 +13,8 @@
         <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="59,230,0,0" TextWrapping="Wrap" Text="55" VerticalAlignment="Top" Height="92" Width="94" Foreground="#FF0D3251" FontSize="80"/>
         <TextBlock x:Name="textBlock_Copy" Margin="153,230,153,0" TextWrapping="Wrap" Text="&gt;" VerticalAlignment="Top" Height="92" Width="94" Foreground="#FF0D3251" FontSize="80" TextAlignment="Center"/>
         <TextBlock x:Name="textBlock_Copy1" HorizontalAlignment="Right" Margin="0,230,54,0" TextWrapping="Wrap" Text="55" VerticalAlignment="Top" Height="92" Width="94" Foreground="#FF0D3251" FontSize="80"/>
-        <Button x:Name="btn_Login_Copy" Content="Uitloggen" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Margin="67,0,67,22" Width="266" Height="58" Background="#FFEE7114" BorderBrush="#FFEE7114" Click="btn_Login_Click"/>
-        <Button x:Name="btn_Login_Copy1" Content="Meer Resultaten" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Margin="67,0,67,92" Width="266" Height="58" Background="#FFEE7114" BorderBrush="#FFEE7114" Click="btn_Login_Click"/>
+        <Button x:Name="btn_Login_Copy" Content="Uitloggen" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Margin="67,0,67,22" Width="266" Height="58" Background="#FFEE7114" BorderBrush="#FFEE7114"/>
+        <Button x:Name="btn_Login_Copy1" Content="Meer Resultaten" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Margin="67,0,67,92" Width="266" Height="58" Background="#FFEE7114" BorderBrush="#FFEE7114"/>
 
     </Grid>
 </Page>

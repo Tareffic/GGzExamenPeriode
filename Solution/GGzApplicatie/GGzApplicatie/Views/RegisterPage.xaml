@@ -30,7 +30,7 @@
         	<LineBreak/>
         	<Run/>
         </TextBlock>
-        <Button x:Name="btn_Login" Content="Registreren" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="67,0,0,12" Width="266" Height="58" Background="#FFEE7114" BorderBrush="#FFEE7114" Click="btn_Login_Click"/>
+        <Button x:Name="btn_Login" Content="Registreren" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="67,0,0,12" Width="266" Height="58" Background="#FFEE7114" BorderBrush="#FFEE7114"/>
         <TextBlock x:Name="textBlock2" HorizontalAlignment="Left" Margin="85,466,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
         <TextBlock x:Name="textBlock2_Copy" Margin="22,485,3,0" TextWrapping="Wrap" Text="laat uw begeleider het wachtwoord invullen " VerticalAlignment="Top" Height="45" Foreground="#FF281C6E" FontSize="18.667"/>
         <TextBlock x:Name="textBlock2_Copy1" Margin="10,132,15,0" TextWrapping="Wrap" Text="voer uw gegevens in om een account aan te maken" VerticalAlignment="Top" Height="45" Foreground="#FF281C6E" FontSize="18.667" TextAlignment="Center" SelectionChanged="textBlock2_Copy1_SelectionChanged"/>

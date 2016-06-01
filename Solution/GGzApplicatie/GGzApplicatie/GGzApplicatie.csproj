@@ -99,7 +99,9 @@
     <Compile Include="Common\ObservableDictionary.cs" />
     <Compile Include="Common\RelayCommand.cs" />
     <Compile Include="Common\SuspensionManager.cs" />
-    <Compile Include="Helpers\User\DatabaseHelperClass.cs" />
+    <Compile Include="Helpers\Admin\AdminLogic.cs" />
+    <Compile Include="Helpers\DatabaseHelperClass.cs" />
+    <Compile Include="Helpers\Score\DataHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SQLite.cs" />
     <Compile Include="SQLiteAsync.cs" />
@@ -144,8 +146,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Helpers\Admin\" />
-    <Folder Include="Helpers\Score\" />
+    <Folder Include="Helpers\User\" />
   </ItemGroup>
   <ItemGroup>
     <Page Include="Views\HomePage.xaml">

@@ -13,19 +13,19 @@ namespace GGzApplicatie.Helpers
 
     public class DatabaseHelperClass
     {
-        public string AdminUsername;
 
-        Admin admininfo = new Admin();
-        SQLiteConnection ggzdb = new SQLiteConnection("GGzDB.db");
-        public void getFirstAdminUsername()
+        Model.Admin adminData = new Model.Admin();
+        Model.Score scoreData = new Model.Score();
+        Model.User userData = new Model.User();
+
+        public Model.Admin AdminData(string query)
         {
-
             using (var statement = new SQLite.SQLiteConnection("GGzDB.db"))
             {
-                admininfo = statement.Query<Admin>
-                            ("select Username from tbl_Admin").FirstOrDefault();
+                adminData = statement.Query<Model.Admin>
+                            (query).FirstOrDefault();
             }
-            AdminUsername = admininfo.Username;
+            return adminData; 
         }
     }
 }

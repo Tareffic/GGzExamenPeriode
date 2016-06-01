@@ -41,7 +41,7 @@ namespace GGzApplicatie.Views
 
         private void btn_Login_Click(object sender, RoutedEventArgs e)
         {
-            dbHelper.getFirstAdminUsername();
+           var dick = dbHelper.AdminData("select Username from tbl_Admin");
         }
 
         private void btn_Register_Click(object sender, RoutedEventArgs e)
