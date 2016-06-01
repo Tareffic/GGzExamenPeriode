@@ -1,4 +1,4 @@
-﻿using GGzApplicatie.View;
+﻿using GGzApplicatie.Views;
 using System;
 using System.Collections.Generic;
 using System.IO;
