@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GGzApplicatie.Helpers;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -22,9 +23,11 @@ namespace GGzApplicatie.Views
     /// </summary>
     public sealed partial class HomePage : Page
     {
+        DatabaseHelperClass dbHelper;
         public HomePage()
         {
             this.InitializeComponent();
+            dbHelper = new DatabaseHelperClass();
         }
 
         /// <summary>
@@ -38,7 +41,7 @@ namespace GGzApplicatie.Views
 
         private void btn_Login_Click(object sender, RoutedEventArgs e)
         {
-
+            dbHelper.getFirstAdminUsername();
         }
 
         private void btn_Register_Click(object sender, RoutedEventArgs e)
