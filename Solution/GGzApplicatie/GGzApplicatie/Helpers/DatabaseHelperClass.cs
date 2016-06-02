@@ -6,7 +6,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Windows.ApplicationModel;
-using System.Linq;
 
 namespace GGzApplicatie.Helpers
 {
@@ -26,6 +25,24 @@ namespace GGzApplicatie.Helpers
                             (query).FirstOrDefault();
             }
             return adminData; 
+        }
+        public Model.User UserData(string query)
+        {
+            using (var statement = new SQLite.SQLiteConnection("GGzDB.db"))
+            {
+                userData = statement.Query<Model.User>
+                            (query).FirstOrDefault();
+            }
+            return userData;
+        }
+        public Model.Score ScoreData(string query)
+        {
+            using (var statement = new SQLite.SQLiteConnection("GGzDB.db"))
+            {
+                scoreData = statement.Query<Model.Score>
+                            (query).FirstOrDefault();
+            }
+            return scoreData;
         }
     }
 }

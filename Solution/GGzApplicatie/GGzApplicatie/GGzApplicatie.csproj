@@ -100,6 +100,7 @@
     <Compile Include="Common\RelayCommand.cs" />
     <Compile Include="Common\SuspensionManager.cs" />
     <Compile Include="Helpers\Admin\AdminLogic.cs" />
+    <Compile Include="Helpers\Constants.cs" />
     <Compile Include="Helpers\DatabaseHelperClass.cs" />
     <Compile Include="Helpers\Score\DataHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

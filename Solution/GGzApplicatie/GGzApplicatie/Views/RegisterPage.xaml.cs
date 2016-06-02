@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Phone.UI.Input;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -22,9 +23,13 @@ namespace GGzApplicatie
     /// </summary>
     public sealed partial class Register : Page
     {
+        Model.Admin adminInfo;
         public Register()
         {
             this.InitializeComponent();
+            adminInfo = new Model.Admin();
+            HardwareButtons.BackPressed += HardwareButtons_BackPressed;
+            LoadComboBox();      
         }
 
         /// <summary>
@@ -35,15 +40,35 @@ namespace GGzApplicatie
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
         }
-
-        private void textBlock2_Copy1_SelectionChanged(object sender, RoutedEventArgs e)
+        public void LoadComboBox()
         {
-
+            
+            using (var difference = new SQLite.SQLiteConnection("GGzDB.db"))
+            {
+                adminInfo = difference.Query<Model.Admin>
+                            ("select Username from tbl_Admin").FirstOrDefault();
+                cmb_AdminUsernames.Items.Add(adminInfo.Username);
+            }
+        }
+        void HardwareButtons_BackPressed(object sender, BackPressedEventArgs e)
+        {
+            if (Frame.CanGoBack)
+            {
+                e.Handled = true;
+                //add "Weet u zeker dat u de registratie wilt afbreken?"
+                //Ja
+                Frame.GoBack();
+                //Nee
+            }
         }
 
-        private void textBlock1_Copy5_SelectionChanged(object sender, RoutedEventArgs e)
+        private void btn_RegisterAccount_Click(object sender, RoutedEventArgs e)
         {
+            //add here from textboxes to database save logic ricky
 
+
+            //end command
+            //Frame.GoBack();
         }
     }
 }
