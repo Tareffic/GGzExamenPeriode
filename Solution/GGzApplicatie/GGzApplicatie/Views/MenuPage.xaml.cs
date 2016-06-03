@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GGzApplicatie.Helpers;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -16,20 +17,19 @@ using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkID=390556
 
-namespace GGzApplicatie
+namespace GGzApplicatie.Views
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class RegisterPage : Page
+    public sealed partial class MenuPage : Page
     {
-        Model.Admin adminInfo;
-        public RegisterPage()
+        Constants constants;
+        public MenuPage()
         {
             this.InitializeComponent();
-            adminInfo = new Model.Admin();
             HardwareButtons.BackPressed += HardwareButtons_BackPressed;
-            LoadComboBox();      
+            constants = new Constants();
         }
 
         /// <summary>
@@ -40,35 +40,37 @@ namespace GGzApplicatie
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
         }
-        public void LoadComboBox()
+
+        private void btn_Logout_Click(object sender, RoutedEventArgs e)
         {
-            using (var difference = new SQLite.SQLiteConnection("GGzDB.db"))
-            {
-                adminInfo = difference.Query<Model.Admin>
-                            ("select Username from tbl_Admin").FirstOrDefault();
-                cmb_AdminUsernames.Items.Add(adminInfo.Username);
-            }
+
+        }
+
+        private void btn_MyInformation_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btn_MyResults_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btn_StartQuestions_Click(object sender, RoutedEventArgs e)
+        {
+
         }
         void HardwareButtons_BackPressed(object sender, BackPressedEventArgs e)
         {
             if (Frame.CanGoBack)
             {
                 e.Handled = true;
-                //add "Weet u zeker dat u de registratie wilt afbreken?"
-                //Ja
+                if(constants.isLogged == true)
+                {
+                  
+                }
                 Frame.GoBack();
-                //Nee
             }
-        }
-
-        private void btn_RegisterAccount_Click(object sender, RoutedEventArgs e)
-        {
-            
-            //add here from textboxes to database save logic ricky
-
-
-            //end command
-            //Frame.GoBack();
         }
     }
 }

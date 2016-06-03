@@ -1,0 +1,19 @@
+﻿<Page
+    x:Class="GGzApplicatie.Views.MenuPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:GGzApplicatie"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid Background="White">
+        <Button x:Name="btn_StartQuestions" Content="Vragenlijst starten" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="77,0,0,396" Width="266" Height="58" Background="#FFEE7114" BorderBrush="#FFEE7114" Click="btn_StartQuestions_Click"/>
+        <Image x:Name="image" Source="ms-appx:///Assets/GGz_Breburg_Logo.jpg" Margin="0,0,10,476"/>
+        <Button x:Name="btn_MyResults" Content="Mijn resultaten" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="77,0,0,305" Width="266" Height="58" Background="#FFEE7114" BorderBrush="#FFEE7114" Click="btn_MyResults_Click"/>
+        <Button x:Name="btn_MyInformation" Content="Mijn gegevens" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="77,0,0,209" Width="266" Height="58" Background="#FFEE7114" BorderBrush="#FFEE7114" Click="btn_MyInformation_Click"/>
+        <Button x:Name="btn_Logout" Content="Uitloggen" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="77,0,0,26" Width="266" Height="58" Background="#FFEE7114" BorderBrush="#FFEE7114" Click="btn_Logout_Click"/>
+
+    </Grid>
+</Page>

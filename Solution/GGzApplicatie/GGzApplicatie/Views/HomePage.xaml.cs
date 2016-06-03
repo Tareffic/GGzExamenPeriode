@@ -28,6 +28,7 @@ namespace GGzApplicatie.Views
     {
         Constants constants;
         Model.User userinfo;
+        Model.Admin admininfo;
         DatabaseHelperClass dbHelper;
         public HomePage()
         {
@@ -35,6 +36,7 @@ namespace GGzApplicatie.Views
             HardwareButtons.BackPressed += HardwareButtons_BackPressed;
             dbHelper = new DatabaseHelperClass();
             userinfo = new Model.User();
+            admininfo = new Model.Admin();
             constants = new Constants();
         }
 
@@ -52,26 +54,36 @@ namespace GGzApplicatie.Views
             UserLogin(txtb_Password.Password, txtb_Username.Text);
         }
 
-        private async void UserLogin(string admin, string username)
+        private async void UserLogin(string adminPassword, string username)
         {
+            try
+            {
+                using (var difference = new SQLite.SQLiteConnection("GGzDB.db"))
+                {
+                    var userlist = difference.Query<Model.User>
+                                     ("select Username, Admin from tbl_User").ToList();       
+                    var adminlist = difference.Query<Model.Admin>
+                                     ("select Username, Password from tbl_Admin").ToList();
 
-            using (var difference = new SQLite.SQLiteConnection("GGzDB.db"))
-            {
-                userinfo = difference.Query<Model.User>
-                            ("select Admin, Username from tbl_User").FirstOrDefault();
+                    var user = userlist.Where(x => x.Username == username).FirstOrDefault().Admin;
+                    var admin = adminlist.Where(x => x.Username == user && x.Password == adminPassword).FirstOrDefault();
+
+                    if (admin != null)
+                    {
+                        constants.isLogged = true;
+                        OpenMenuPage();
+                    }
+                }     
             }
-            if(admin == userinfo.Admin && username == userinfo.Username)
+            catch (Exception)
             {
-                MessageDialog msgbox = new MessageDialog("Inloggen gelukt"); //testdialogue
-                await msgbox.ShowAsync();
-                constants.isLogged = true;
-                OpenTestPage(); //placeholder replace with Menu its added
+                LoginFailed();
             }
-            else
-            {
-                MessageDialog msgbox = new MessageDialog("Inloggen failed"); //testdialogue
-                await msgbox.ShowAsync();
-            }
+        }
+        public async void LoginFailed()
+        {
+            MessageDialog msgbox = new MessageDialog("Gebruikersnaam of wachtwoord is onjuist.");
+            await msgbox.ShowAsync();
         }
         void HardwareButtons_BackPressed(object sender, BackPressedEventArgs e)
         {
@@ -85,14 +97,14 @@ namespace GGzApplicatie.Views
         {
             if (constants.isLogged == false)
             {
-                Frame.Navigate(typeof(Register));
+                Frame.Navigate(typeof(RegisterPage));
             }
         }
-        public void OpenTestPage()
+        public void OpenMenuPage()
         {
-            if (constants.isLogged == false)
+            if (constants.isLogged == true)
             {
-                Frame.Navigate(typeof(Test));
+                Frame.Navigate(typeof(MenuPage));
             }
         }
         private void btn_Register_Click(object sender, RoutedEventArgs e)
