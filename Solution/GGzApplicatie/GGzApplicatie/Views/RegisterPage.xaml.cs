@@ -6,6 +6,7 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Phone.UI.Input;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -24,10 +25,12 @@ namespace GGzApplicatie
     public sealed partial class RegisterPage : Page
     {
         Model.Admin adminInfo;
+        Model.User userinfo;
         public RegisterPage()
         {
             this.InitializeComponent();
             adminInfo = new Model.Admin();
+            userinfo = new Model.User();
             HardwareButtons.BackPressed += HardwareButtons_BackPressed;
             LoadComboBox();      
         }
@@ -39,7 +42,9 @@ namespace GGzApplicatie
         /// This parameter is typically used to configure the page.</param>
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
+
         }
+
         public void LoadComboBox()
         {
             using (var difference = new SQLite.SQLiteConnection("GGzDB.db"))
@@ -49,23 +54,38 @@ namespace GGzApplicatie
                 cmb_AdminUsernames.Items.Add(adminInfo.Username);
             }
         }
-        void HardwareButtons_BackPressed(object sender, BackPressedEventArgs e)
+
+        async void HardwareButtons_BackPressed(object sender, BackPressedEventArgs e)
         {
             if (Frame.CanGoBack)
             {
                 e.Handled = true;
                 //add "Weet u zeker dat u de registratie wilt afbreken?"
                 //Ja
-                Frame.GoBack();
+                MessageDialog dialog = new MessageDialog("Weet u zeker dat u de registratie wilt afbreken?");
+                dialog.Title = "Registratie afbreken";
+                dialog.Commands.Add(new UICommand { Label = "Ja", Id = 0 });
+                dialog.Commands.Add(new UICommand { Label = "Nee", Id = 1 });
+                IUICommand res = await dialog.ShowAsync();
+
+                if ((int)res.Id == 0)
+                {
+                    Frame.GoBack();
+                }
+                else
+                {
+                    
+                }
                 //Nee
             }
         }
 
         private void btn_RegisterAccount_Click(object sender, RoutedEventArgs e)
         {
-            
-            //add here from textboxes to database save logic ricky
+            if (txtb_Username == userinfo.)
+            {
 
+            }
 
             //end command
             //Frame.GoBack();
