@@ -54,7 +54,7 @@ namespace GGzApplicatie.Views
             UserLogin(txtb_Password.Password, txtb_Username.Text);
         }
 
-        private async void UserLogin(string adminPassword, string username)
+        private void UserLogin(string adminPassword, string username)
         {
             try
             {
