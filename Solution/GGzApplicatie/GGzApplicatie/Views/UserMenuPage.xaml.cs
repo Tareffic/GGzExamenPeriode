@@ -7,6 +7,7 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Phone.UI.Input;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -20,17 +21,18 @@ using Windows.UI.Xaml.Navigation;
 namespace GGzApplicatie.Views
 {
     /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
+    /// UserMenuPage represents a page that shows after being logged in.
     /// </summary>
-    public sealed partial class MenuPage : Page
+    public sealed partial class UserMenuPage : Page
     {
-        Constants constants;
-        public MenuPage()
+
+        public UserMenuPage()
         {
             this.InitializeComponent();
             HardwareButtons.BackPressed += HardwareButtons_BackPressed;
-            constants = new Constants();
+            LoadWelcome(UserHelper.tmpName, UserHelper.tmpUserName);       
         }
+
 
         /// <summary>
         /// Invoked when this page is about to be displayed in a Frame.
@@ -40,35 +42,41 @@ namespace GGzApplicatie.Views
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
         }
-
+        /// <param name="tmpName">tmpName from UserHelper.cs.
+        /// This parameter is typically used to display the name of the user to an label</param>
+        /// <param name="tmpName">tmpUsername from UserHelper.cs
+        /// This parameter is typically used to display the username of the user to an label</param>
+        public void LoadWelcome(string tmpName, string tmpUsername)
+        {
+            lbl_Welcome.Text = "Welkom " + tmpName + ". U bent ingelogd als " + tmpUsername + "."; 
+        }
         private void btn_Logout_Click(object sender, RoutedEventArgs e)
         {
-
         }
 
         private void btn_MyInformation_Click(object sender, RoutedEventArgs e)
         {
-
+            OpenAbout();
         }
 
         private void btn_MyResults_Click(object sender, RoutedEventArgs e)
         {
-
+            
         }
-
+        public void OpenAbout()
+        {
+            Frame.Navigate(typeof(UserInfoPage));
+        }
         private void btn_StartQuestions_Click(object sender, RoutedEventArgs e)
         {
 
         }
+        //When back button handled go back one frame.
         void HardwareButtons_BackPressed(object sender, BackPressedEventArgs e)
         {
             if (Frame.CanGoBack)
             {
                 e.Handled = true;
-                if(constants.isLogged == true)
-                {
-                  
-                }
                 Frame.GoBack();
             }
         }

@@ -22,55 +22,43 @@ using Windows.Phone.UI.Input;
 namespace GGzApplicatie.Views
 {
     /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
+    /// HomePage represents the start-up page of the application, it is used to navigate to register or to login.
     /// </summary>
     public sealed partial class HomePage : Page
     {
-        Constants constants;
-        Model.User userinfo;
-        Model.Admin admininfo;
-        DatabaseHelperClass dbHelper;
         public HomePage()
         {
             this.InitializeComponent();
             HardwareButtons.BackPressed += HardwareButtons_BackPressed;
-            dbHelper = new DatabaseHelperClass();
-            userinfo = new Model.User();
-            admininfo = new Model.Admin();
-            constants = new Constants();
-        }
-
-        /// <summary>
-        /// Invoked when this page is about to be displayed in a Frame.
-        /// </summary>
-        /// <param name="e">Event data that describes how this page was reached.
-        /// This parameter is typically used to configure the page.</param>
-        protected override void OnNavigatedTo(NavigationEventArgs e)
-        {
         }
 
         private void btn_Login_Click(object sender, RoutedEventArgs e)
         {
-            UserLogin(txtb_Password.Password, txtb_Username.Text);
+            UserLogin(txtb_Username.Text, txtb_Password.Password);
         }
 
-        private void UserLogin(string adminPassword, string username)
+        private void UserLogin(string username, string adminPassword)
         {
             try
             {
-                using (var difference = new SQLite.SQLiteConnection("GGzDB.db"))
+                // using Sql connection
+                using (SQLite.SQLiteConnection difference = new SQLite.SQLiteConnection("GGzDB.db"))
                 {
+                    // Create list from database to Model.User.
                     var userlist = difference.Query<Model.User>
-                                     ("select Username, Admin from tbl_User").ToList();       
+                                     ("select Username, Admin from tbl_User").ToList();    
+                    // Create list from database to Model.Admin.
                     var adminlist = difference.Query<Model.Admin>
                                      ("select Username, Password from tbl_Admin").ToList();
-
+                    // Compares input with list, returns found username with Admin username
                     var user = userlist.Where(x => x.Username == username).FirstOrDefault().Admin;
+                    // Compares input matches with the Admin password 
                     var admin = adminlist.Where(x => x.Username == user && x.Password == adminPassword).FirstOrDefault();
 
+                    // Check if admin not is null
                     if (admin != null)
                     {
-                        constants.isLogged = true;
+                        LoadUserData();
                         OpenMenuPage();
                     }
                 }     
@@ -79,6 +67,26 @@ namespace GGzApplicatie.Views
             {
                 LoginFailed();
             }
+        }
+        public void LoadUserData()
+        {
+            // Using Sql connection
+            using (SQLite.SQLiteConnection difference = new SQLite.SQLiteConnection("GGzDB.db"))
+            {
+                // Create list from database to model
+                List<Model.User> selectuserinfo = difference.Query<Model.User>
+                                 ("select Name, Surname, Username, DateOfBirth, Admin  from tbl_User").ToList();
+
+                // Select user from list
+                Model.User selectUserInfo = selectuserinfo.Where(x => x.Username == txtb_Username.Text).FirstOrDefault();
+
+                // Fill Userhelper strings
+                UserHelper.tmpName = selectUserInfo.Name;
+                UserHelper.tmpSurname = selectUserInfo.Surname;
+                UserHelper.tmpUserName = selectUserInfo.Username;
+                UserHelper.tmpDateOfBirth = selectUserInfo.DateOfBirth;
+                UserHelper.tmpAdmin = selectUserInfo.Admin;
+            } 
         }
         public async void LoginFailed()
         {
@@ -95,17 +103,11 @@ namespace GGzApplicatie.Views
         }
         public void OpenRegisterPage()
         {
-            if (constants.isLogged == false)
-            {
                 Frame.Navigate(typeof(RegisterPage));
-            }
         }
         public void OpenMenuPage()
         {
-            if (constants.isLogged == true)
-            {
-                Frame.Navigate(typeof(MenuPage));
-            }
+                Frame.Navigate(typeof(UserMenuPage));
         }
         private void btn_Register_Click(object sender, RoutedEventArgs e)
         {

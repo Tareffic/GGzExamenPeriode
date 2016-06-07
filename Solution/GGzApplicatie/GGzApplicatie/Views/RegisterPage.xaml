@@ -12,11 +12,11 @@
     <Grid Background="White">
         <Image x:Name="image" Source="ms-appx:///Assets/GGz_Breburg_Logo.jpg" Margin="0,0,15,488"/>
         <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="85,152,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
-        <TextBox x:Name="txtb_Username" Margin="198,196,15,408" TextWrapping="Wrap" Text="" VerticalAlignment="Stretch" BorderBrush="#FF281C6E" Foreground="#FF281C6E" BorderThickness="1.5,1" SelectionHighlightColor="#FF281C6E" Background="White"/>
+        <TextBox x:Name="txtb_Username" Margin="198,196,15,408" TextWrapping="Wrap" Text="" VerticalAlignment="Stretch" BorderBrush="#FF281C6E" Foreground="#FF281C6E" BorderThickness="1.5,1" SelectionHighlightColor="#FF281C6E" Background="White" MaxLength="12"/>
         <TextBlock x:Name="lbl_Username" HorizontalAlignment="Left" Margin="10,201,0,0" TextWrapping="Wrap" Text="Gebruikersnaam" VerticalAlignment="Top" Height="32" Width="188" Foreground="#FFEE7114" FontSize="21.333" FontWeight="Bold"/>
-        <TextBox x:Name="txtb_Name" Margin="198,254,15,350" TextWrapping="Wrap" Text="" VerticalAlignment="Stretch" BorderBrush="#FF281C6E" Foreground="#FF281C6E" BorderThickness="1.5,1" SelectionHighlightColor="#FF281C6E" Background="White"/>
+        <TextBox x:Name="txtb_Name" Margin="198,254,15,350" TextWrapping="Wrap" Text="" VerticalAlignment="Stretch" BorderBrush="#FF281C6E" Foreground="#FF281C6E" BorderThickness="1.5,1" SelectionHighlightColor="#FF281C6E" Background="White" MaxLength="25"/>
         <TextBlock x:Name="lbl_Name" HorizontalAlignment="Left" Margin="10,259,0,0" TextWrapping="Wrap" Text="Voornaam" VerticalAlignment="Top" Height="32" Width="188" Foreground="#FFEE7114" FontSize="21.333" FontWeight="Bold"/>
-        <TextBox x:Name="txtb_Surname" Margin="198,311,15,293" TextWrapping="Wrap" Text="" VerticalAlignment="Stretch" BorderBrush="#FF281C6E" Foreground="#FF281C6E" BorderThickness="1.5,1" SelectionHighlightColor="#FF281C6E" Background="White"/>
+        <TextBox x:Name="txtb_Surname" Margin="198,311,15,293" TextWrapping="Wrap" Text="" VerticalAlignment="Stretch" BorderBrush="#FF281C6E" Foreground="#FF281C6E" BorderThickness="1.5,1" SelectionHighlightColor="#FF281C6E" Background="White" MaxLength="40"/>
         <TextBlock x:Name="lbl_Surname" HorizontalAlignment="Left" Margin="10,315,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="32" Width="188" Foreground="#FFEE7114" FontSize="21.333" Text="Achternaam" FontWeight="Bold"/>
         <TextBlock x:Name="lbl_DateOfBirth" HorizontalAlignment="Left" Margin="10,370,0,0" TextWrapping="Wrap" Text="Geboortedatum" VerticalAlignment="Top" Height="32" Width="188" Foreground="#FFEE7114" FontSize="21.333" FontWeight="Bold"/>
         <Button x:Name="btn_RegisterAccount" Content="Voltooien" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="67,0,0,12" Width="266" Height="58" Background="#FFEE7114" BorderBrush="#FFEE7114" Click="btn_RegisterAccount_Click"/>
@@ -24,7 +24,7 @@
         <TextBlock x:Name="textBlock2_Copy" Margin="15,484,10,0" TextWrapping="Wrap" Text="laat uw begeleider het scherm controleren." VerticalAlignment="Top" Height="45" Foreground="#FF281C6E" FontSize="18.667"/>
         <TextBlock x:Name="textBlock2_Copy1" Margin="10,132,15,0" TextWrapping="Wrap" Text="voer uw gegevens in om een account aan te maken" VerticalAlignment="Top" Height="45" Foreground="#FF281C6E" FontSize="18.667" TextAlignment="Center"/>
         <TextBlock x:Name="lbl_Admin" HorizontalAlignment="Left" Margin="10,425,0,0" TextWrapping="Wrap" Text="Behandelaar" VerticalAlignment="Top" Height="32" Width="188" Foreground="#FFEE7114" FontSize="21.333" FontWeight="Bold"/>
-        <ComboBox x:Name="cmb_AdminUsernames" HorizontalAlignment="Left" Margin="198,415,0,0" VerticalAlignment="Top" Width="187" Height="45" BorderBrush="#FF281C6E" Foreground="#FF281C6E" BorderThickness="1.5,1" Background="White"/>
+        <ComboBox x:Name="cmb_AdminUsernames" HorizontalAlignment="Left" Margin="198,415,0,0" VerticalAlignment="Top" Width="187" Height="56" BorderBrush="#FF281C6E" Foreground="#FF281C6E" BorderThickness="1.5,1" Background="White" MaxDropDownHeight="1" PlaceholderText="Selecteer een behandelaar"/>
         <DatePicker x:Name="dtp_Birthday" HorizontalAlignment="Left" Margin="198,360,0,0" VerticalAlignment="Top" Width="187" Height="50" Foreground="#FF281C6E" BorderThickness="1.5,1" Background="White" DayFormat="{}{day.integer}"/>
     </Grid>
 </Page>

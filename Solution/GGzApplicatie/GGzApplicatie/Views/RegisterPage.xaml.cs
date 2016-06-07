@@ -29,16 +29,6 @@ namespace GGzApplicatie
             LoadComboBox();
         }
 
-        /// <summary>
-        /// Invoked when this page is about to be displayed in a Frame.
-        /// </summary>
-        /// <param name="e">Event data that describes how this page was reached.
-        /// This parameter is typically used to configure the page.</param>
-        protected override void OnNavigatedTo(NavigationEventArgs e)
-        {
-
-        }
-
         public void LoadComboBox()
         {
             using (var difference = new SQLite.SQLiteConnection("GGzDB.db"))
@@ -54,7 +44,6 @@ namespace GGzApplicatie
             Frame.GoBack();
         }
 
-
         private async void btn_RegisterAccount_Click(object sender, RoutedEventArgs e)
         {
 
@@ -65,7 +54,7 @@ namespace GGzApplicatie
                 if (txtb_Username.Text != string.Empty)
                 {
                     var user = userlist.Where(x => x.Username == txtb_Username.Text).FirstOrDefault();
-                    
+
                     if (user != null)
                     {
 
@@ -82,13 +71,10 @@ namespace GGzApplicatie
                     }
                 }
             }
-
-
-            //end command
-            //Frame.GoBack();
+            Frame.GoBack();
         }
 
-        public static void insertData(string Name, string Surname, string Username, DateTime DateOfBirth, string Admin)
+        public async static void insertData(string Name, string Surname, string Username, DateTime DateOfBirth, string Admin)
         {
             try
             {
@@ -97,9 +83,10 @@ namespace GGzApplicatie
                     var statement = connection.CreateCommand(@"INSERT INTO tbl_User (Name, Surname, Username, DateOfBirth, Admin) VALUES(?, ? , ? , ? , ?);", Name, Surname, Username, DateOfBirth, Admin);
                     statement.ExecuteNonQuery();
                 }
-
+                MessageDialog msgbox = new MessageDialog("Meld aan met uw gebruikersnaam en laat het wachtwoord invullen door de behandelaar.");
+                await msgbox.ShowAsync();    
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
         }
