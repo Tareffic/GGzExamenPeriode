@@ -1,17 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
+﻿using GGzApplicatie.Helpers;
+using Windows.Phone.UI.Input;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkID=390556
 
@@ -25,15 +15,46 @@ namespace GGzApplicatie.Views
         public ResultPage()
         {
             this.InitializeComponent();
+            HardwareButtons.BackPressed += HardwareButtons_BackPressed;
+            LoadAllLabelsAndTextboxes();
+        }
+        public void LoadAllLabelsAndTextboxes()
+        {
+            if(UserHelper.HasFirstScore == true && UserHelper.HasSecondScore == false)
+            {
+                lbl_FirstScoreText.Text = "De onderstaande score is de uitslag behaald op " + ScoreHelper.tmpDateOfScore.ToString("dd/MMMM/yyyy") + ".";
+                txtb_FirstCount.Text = ScoreHelper.tmpTotalScore.ToString();
+            }
+            else if (UserHelper.HasFirstScore == true && UserHelper.HasSecondScore == true)
+            {
+                lbl_FirstScoreText.Text = "De onderstaande score is de uitslag behaald op " + ScoreHelper.tmpDateOfScore.ToString("dd/MMMM/yyyy") + ".";
+                lbl_SecondScoreText.Text = "De onderstaande score is de uitslag behaald op " + ScoreHelperPrevious.tmpDateOfScore.ToString("dd/MMMM/yyyy") + ".";
+                txtb_FirstCount.Text = ScoreHelper.tmpTotalScore.ToString();
+                txtb_SecondCount.Text = ScoreHelperPrevious.tmpTotalScore.ToString();
+            }
+            else if (UserHelper.HasFirstScore == false)
+            {
+                lbl_FirstScoreText.Text = "Voltooi een vragenlijst om de scores in te kunnen zien.";
+            }
+
         }
 
-        /// <summary>
-        /// Invoked when this page is about to be displayed in a Frame.
-        /// </summary>
-        /// <param name="e">Event data that describes how this page was reached.
-        /// This parameter is typically used to configure the page.</param>
-        protected override void OnNavigatedTo(NavigationEventArgs e)
+        private void btn_GoBack_Click(object sender, RoutedEventArgs e)
         {
+            Frame.GoBack();
+        }
+
+        private void btn_Results_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+        void HardwareButtons_BackPressed(object sender, BackPressedEventArgs e)
+        {
+            if (Frame.CanGoBack)
+            {
+                e.Handled = true;
+                Frame.GoBack();
+            }
         }
     }
 }

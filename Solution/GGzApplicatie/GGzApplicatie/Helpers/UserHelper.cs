@@ -24,5 +24,10 @@ namespace GGzApplicatie.Helpers
         /// Temporary Admin
         /// </summary>
         public static string tmpAdmin = "";
+        /// <summary>
+        /// Boolean for checking if scores are made
+        /// </summary>
+        public static bool HasFirstScore;
+        public static bool HasSecondScore;
     } 
 }

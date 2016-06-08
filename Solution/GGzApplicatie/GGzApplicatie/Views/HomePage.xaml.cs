@@ -59,7 +59,12 @@ namespace GGzApplicatie.Views
                     if (admin != null)
                     {
                         LoadUserData();
+                        LoadScoreData();
                         OpenMenuPage();
+                    }
+                    if(adminPassword != admin.Password)
+                    {
+                        LoginFailed();
                     }
                 }     
             }
@@ -87,6 +92,56 @@ namespace GGzApplicatie.Views
                 UserHelper.tmpDateOfBirth = selectUserInfo.DateOfBirth;
                 UserHelper.tmpAdmin = selectUserInfo.Admin;
             } 
+        }
+        public void LoadScoreData()
+        {
+            // Using Sql connection
+            using (SQLite.SQLiteConnection difference = new SQLite.SQLiteConnection("GGzDB.db"))
+            {
+                // Create list from database to model
+                    List<Model.Score> selectuserinfoSecond = difference.Query<Model.Score>
+                     ("select * from tbl_Score where Username = '" + UserHelper.tmpUserName + "' order by date(DateOfScore) Desc limit 2").ToList();
+                    //new fill strings
+                    try
+                    {
+                        ScoreHelperPrevious.tmpTotalScore = selectuserinfoSecond[0].TotalScore;
+                        ScoreHelperPrevious.tmpVITAScore = selectuserinfoSecond[0].AGGRScore;
+                        ScoreHelperPrevious.tmpAGORScore = selectuserinfoSecond[0].AGORScore;
+                        ScoreHelperPrevious.tmpANXIScore = selectuserinfoSecond[0].ANXIScore;
+                        ScoreHelperPrevious.tmpCOGNScore = selectuserinfoSecond[0].COGNScore;
+                        ScoreHelperPrevious.tmpDateOfScore = selectuserinfoSecond[0].DateOfScore;
+                        ScoreHelperPrevious.tmpMoodScore = selectuserinfoSecond[0].MOODScore;
+                        ScoreHelperPrevious.tmpSOMAScore = selectuserinfoSecond[0].SOMAScore;
+                        ScoreHelperPrevious.tmpSOPHScore = selectuserinfoSecond[0].SOPHScore;
+                        ScoreHelperPrevious.tmpWORKScore = selectuserinfoSecond[0].WORKScore;
+                        ScoreHelperPrevious.tmpVITAScore = selectuserinfoSecond[0].VITAScore;
+                        UserHelper.HasFirstScore = true;
+                    }
+                    catch
+                    {
+                        UserHelper.HasFirstScore = false;
+                    }
+                    try
+                    {
+                        //old fill strings
+                        ScoreHelper.tmpTotalScore = selectuserinfoSecond[1].TotalScore;
+                        ScoreHelper.tmpVITAScore = selectuserinfoSecond[1].AGGRScore;
+                        ScoreHelper.tmpAGORScore = selectuserinfoSecond[1].AGORScore;
+                        ScoreHelper.tmpANXIScore = selectuserinfoSecond[1].ANXIScore;
+                        ScoreHelper.tmpCOGNScore = selectuserinfoSecond[1].COGNScore;
+                        ScoreHelper.tmpDateOfScore = selectuserinfoSecond[1].DateOfScore;
+                        ScoreHelper.tmpMoodScore = selectuserinfoSecond[1].MOODScore;
+                        ScoreHelper.tmpSOMAScore = selectuserinfoSecond[1].SOMAScore;
+                        ScoreHelper.tmpSOPHScore = selectuserinfoSecond[1].SOPHScore;
+                        ScoreHelper.tmpWORKScore = selectuserinfoSecond[1].WORKScore;
+                        ScoreHelper.tmpVITAScore = selectuserinfoSecond[1].VITAScore;
+                        UserHelper.HasSecondScore = true;
+                    }
+                    catch
+                    {
+                        UserHelper.HasSecondScore = false;
+                    }
+                }
         }
         public async void LoginFailed()
         {

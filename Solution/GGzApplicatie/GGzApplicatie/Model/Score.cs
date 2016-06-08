@@ -8,6 +8,7 @@ namespace GGzApplicatie.Model
 {
     public class Score
     {
+        public string Username { get; set; }
         public byte Scores { get; set; }
         public byte TotalScore { get; set; }
         public DateTime DateOfScore { get; set; }

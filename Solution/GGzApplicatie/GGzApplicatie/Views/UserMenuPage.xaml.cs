@@ -56,16 +56,20 @@ namespace GGzApplicatie.Views
 
         private void btn_MyInformation_Click(object sender, RoutedEventArgs e)
         {
-            OpenAbout();
+            OpenInfoPage();
         }
 
         private void btn_MyResults_Click(object sender, RoutedEventArgs e)
         {
-            
+            OpenResultPage();
         }
-        public void OpenAbout()
+        public void OpenInfoPage()
         {
             Frame.Navigate(typeof(UserInfoPage));
+        }
+        public void OpenResultPage()
+        {
+            Frame.Navigate(typeof(ResultPage));
         }
         private void btn_StartQuestions_Click(object sender, RoutedEventArgs e)
         {
