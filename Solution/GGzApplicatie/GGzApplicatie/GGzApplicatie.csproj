@@ -97,7 +97,6 @@
     <Compile Include="Common\RelayCommand.cs" />
     <Compile Include="Common\SuspensionManager.cs" />
     <Compile Include="Helpers\DatabaseHelperClass.cs" />
-    <Compile Include="Helpers\QuestionHelper.cs" />
     <Compile Include="Helpers\OldDateScoreHelper.cs" />
     <Compile Include="Helpers\NewDateScoreHelper.cs" />
     <Compile Include="Helpers\UserHelper.cs" />
