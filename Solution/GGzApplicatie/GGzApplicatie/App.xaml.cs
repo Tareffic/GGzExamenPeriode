@@ -18,9 +18,6 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Navigation;
-using System.Globalization;
-using System.Threading;
-using Windows.Globalization.DateTimeFormatting;
 
 // The Blank Application template is documented at http://go.microsoft.com/fwlink/?LinkId=391641
 
@@ -41,7 +38,7 @@ namespace GGzApplicatie
         public App()
         {
             
-            //CopyDatabase();
+            CopyDatabase();
             this.InitializeComponent();
             this.Suspending += this.OnSuspending; 
         }

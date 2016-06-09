@@ -22,15 +22,15 @@ namespace GGzApplicatie.Views
         {
             if(UserHelper.HasFirstScore == true && UserHelper.HasSecondScore == false)
             {
-                lbl_FirstScoreText.Text = "De onderstaande score is de uitslag behaald op " + ScoreHelper.tmpDateOfScore.ToString("dd/MMMM/yyyy") + ".";
-                txtb_FirstCount.Text = ScoreHelper.tmpTotalScore.ToString();
+                lbl_FirstScoreText.Text = "De onderstaande score is de uitslag behaald op " + OldDateScoreHelper.tmpDateOfScore.ToString("dd/MMMM/yyyy") + ".";
+                txtb_FirstCount.Text = OldDateScoreHelper.tmpTotalScore.ToString();
             }
             else if (UserHelper.HasFirstScore == true && UserHelper.HasSecondScore == true)
             {
-                lbl_FirstScoreText.Text = "De onderstaande score is de uitslag behaald op " + ScoreHelper.tmpDateOfScore.ToString("dd/MMMM/yyyy") + ".";
-                lbl_SecondScoreText.Text = "De onderstaande score is de uitslag behaald op " + ScoreHelperPrevious.tmpDateOfScore.ToString("dd/MMMM/yyyy") + ".";
-                txtb_FirstCount.Text = ScoreHelper.tmpTotalScore.ToString();
-                txtb_SecondCount.Text = ScoreHelperPrevious.tmpTotalScore.ToString();
+                lbl_FirstScoreText.Text = "De onderstaande score is de uitslag behaald op " + OldDateScoreHelper.tmpDateOfScore.ToString("dd/MMMM/yyyy") + ".";
+                lbl_SecondScoreText.Text = "De onderstaande score is de uitslag behaald op " + NewDateScoreHelper.tmpDateOfScore.ToString("dd/MMMM/yyyy") + ".";
+                txtb_FirstCount.Text = OldDateScoreHelper.tmpTotalScore.ToString();
+                txtb_SecondCount.Text = NewDateScoreHelper.tmpTotalScore.ToString();
             }
             else if (UserHelper.HasFirstScore == false)
             {

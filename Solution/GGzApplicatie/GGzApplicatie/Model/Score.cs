@@ -8,22 +8,24 @@ namespace GGzApplicatie.Model
 {
     public class Score
     {
+        public int Id { get; set; }
         public string Username { get; set; }
-        public byte Scores { get; set; }
-        public byte TotalScore { get; set; }
+        public int Scores { get; set; }
+        public int TotalScore { get; set; }
         public DateTime DateOfScore { get; set; }
-        public byte AGGRScore { get; set; }
-        public byte AGORScore { get; set; }
-        public byte ANXIScore { get; set; }
-        public byte COGNScore { get; set; }
-        public byte MOODScore { get; set; }
-        public byte SOMAScore { get; set; }
-        public byte SOPHScore { get; set; }
-        public byte VITAScore { get; set; }
-        public byte WORKScore { get; set; }
+        public int AGGRScore { get; set; }
+        public int AGORScore { get; set; }
+        public int ANXIScore { get; set; }
+        public int COGNScore { get; set; }
+        public int MOODScore { get; set; }
+        public int SOMAScore { get; set; }
+        public int SOPHScore { get; set; }
+        public int VITAScore { get; set; }
+        public int WORKScore { get; set; }
         public Score()
         {
             //Constructor
         }
+
     }
 }

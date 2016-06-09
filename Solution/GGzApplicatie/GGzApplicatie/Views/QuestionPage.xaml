@@ -1,0 +1,23 @@
+﻿<Page
+    x:Class="GGzApplicatie.Views.QuestionPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:GGzApplicatie"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid Background="White">
+        <TextBlock x:Name="txtb_LoadQuestion" Margin="10,170,10,0" TextWrapping="Wrap" Text="Is dit een voorbeeld vraag?" VerticalAlignment="Top" Height="137" Foreground="#FF281C6E" FontSize="26.667" SelectionChanged="textBlock2_SelectionChanged" TextAlignment="Center"/>
+        <Image x:Name="image" Source="ms-appx:///Assets/GGz_Breburg_Logo.jpg" Margin="0,0,0,475"/>
+        <TextBlock x:Name="txtb_QuestionProgress" Margin="80,111,78,0" TextWrapping="Wrap" Text="11/48" VerticalAlignment="Top" Height="37" Foreground="#FF281C6E" FontSize="26.667" SelectionChanged="textBlock2_SelectionChanged" TextAlignment="Center"/>
+        <Button x:Name="btn_NextQuestion" Content="Volgende" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="10,0,0,26" Width="380" Height="60" Background="#FFEE7114" BorderBrush="#FFEE7114" Click="btn_NextQuestion_Click"/>
+        <RadioButton x:Name="btn_AnswerA" Content="Nooit" HorizontalAlignment="Left" Margin="10,323,0,0" VerticalAlignment="Top" Height="72" Width="177" Background="#FFEE7114" Foreground="#FF281C6E" BorderBrush="#FF281C6E" Checked="Answer_Checked"/>
+        <RadioButton x:Name="btn_AnswerB" Content="Zelden" HorizontalAlignment="Left" Margin="213,323,0,0" VerticalAlignment="Top" Height="72" Width="177" Background="#FFEE7114" BorderBrush="#FF281C6E" Foreground="#FF281C6E" Checked="Answer_Checked"/>
+        <RadioButton x:Name="btn_AnswerC" Content="Soms" HorizontalAlignment="Left" Margin="10,393,0,0" VerticalAlignment="Top" Height="72" Width="177" Background="#FFEE7114" BorderBrush="#FF281C6E" Foreground="#FF281C6E" Checked="Answer_Checked"/>
+        <RadioButton x:Name="btn_AnswerD" Content="Vaak" HorizontalAlignment="Left" Margin="213,393,0,0" VerticalAlignment="Top" Height="72" Width="177" Background="#FFEE7114" BorderBrush="#FF281C6E" Foreground="#FF281C6E" Checked="Answer_Checked"/>
+        <RadioButton x:Name="btn_AnswerE" Content="Zeer vaak" HorizontalAlignment="Left" Margin="10,464,0,0" VerticalAlignment="Top" Height="72" Width="177" Background="#FFEE7114" BorderBrush="#FF281C6E" Foreground="#FF281C6E" Checked="Answer_Checked"/>
+        <RadioButton x:Name="btn_AnswerF" Content="N.V.T" HorizontalAlignment="Left" Margin="213,464,0,0" VerticalAlignment="Top" Height="72" Width="177" Background="#FFEE7114" BorderBrush="#FF281C6E" Foreground="#FF281C6E" Checked="Answer_Checked"/>
+    </Grid>
+</Page>

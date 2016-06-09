@@ -6,8 +6,12 @@ using System.Threading.Tasks;
 
 namespace GGzApplicatie.Helpers
 {
-    class ScoreHelperPrevious
+    class NewDateScoreHelper
     {
+        /// <summary>
+        /// Temporary Second id
+        /// </summary>
+        public static int tmpId;
         /// <summary>
         /// Temporary Second Username
         /// </summary>
@@ -23,38 +27,38 @@ namespace GGzApplicatie.Helpers
         /// <summary>
         /// Temporary Second AGGRScore
         /// </summary>
-        public static byte tmpAGGRScore;
+        public static int tmpAGGRScore;
         /// <summary>
         /// Temporary Second AGORScore
         /// </summary>
-        public static byte tmpAGORScore;
+        public static int tmpAGORScore;
         /// <summary>
         /// Temporary Second ANXIScore
         /// </summary>
-        public static byte tmpANXIScore;
+        public static int tmpANXIScore;
         /// <summary>
         /// Temporary Second COGNScore
         /// </summary>
-        public static byte tmpCOGNScore;
+        public static int tmpCOGNScore;
         /// <summary>
         /// Temporary Second MoodScore
         /// </summary>
-        public static byte tmpMoodScore;
+        public static int tmpMoodScore;
         /// <summary>
         /// Temporary Second SOMAScore
         /// </summary>
-        public static byte tmpSOMAScore;
+        public static int tmpSOMAScore;
         /// <summary>
         /// Temporary Second SOPHScore
         /// </summary>
-        public static byte tmpSOPHScore;
+        public static int tmpSOPHScore;
         /// <summary>
         /// Temporary Second VITAScore
         /// </summary>
-        public static byte tmpVITAScore;
+        public static int tmpVITAScore;
         /// <summary>
         /// Temporary Second WORKScore
         /// </summary>
-        public static byte tmpWORKScore;
+        public static int tmpWORKScore;
     }
 }

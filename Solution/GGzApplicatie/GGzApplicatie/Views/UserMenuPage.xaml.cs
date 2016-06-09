@@ -71,9 +71,13 @@ namespace GGzApplicatie.Views
         {
             Frame.Navigate(typeof(ResultPage));
         }
+        public void OpenQuestionPage()
+        {
+            Frame.Navigate(typeof(QuestionPage));
+        }
         private void btn_StartQuestions_Click(object sender, RoutedEventArgs e)
         {
-
+            OpenQuestionPage();
         }
         //When back button handled go back one frame.
         void HardwareButtons_BackPressed(object sender, BackPressedEventArgs e)
