@@ -10,8 +10,8 @@
 
     <Grid Background="White">
         <Image x:Name="image" Source="ms-appx:///Assets/GGz_Breburg_Logo.jpg" Margin="0,0,0,475"/>
-        <TextBlock x:Name="txtb_FirstCount" HorizontalAlignment="Left" Margin="161,181,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="92" Width="94" Foreground="#FF0D3251" FontSize="80"/>
-        <TextBlock x:Name="txtb_SecondCount" HorizontalAlignment="Right" Margin="0,325,145,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="92" Width="94" Foreground="#FF0D3251" FontSize="80"/>
+        <TextBlock x:Name="txtb_FirstCount" HorizontalAlignment="Left" Margin="119,181,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="92" Width="175" Foreground="#FF0D3251" FontSize="80"/>
+        <TextBlock x:Name="txtb_SecondCount" HorizontalAlignment="Right" Margin="0,325,106,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="92" Width="175" Foreground="#FF0D3251" FontSize="80"/>
         <Button x:Name="btn_GoBack" Content="Terug naar het Hoofdmenu" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Margin="67,0,67,22" Width="266" Height="58" Background="#FFEE7114" BorderBrush="#FFEE7114" Click="btn_GoBack_Click"/>
         <Button x:Name="btn_Results" Content="Geavanceerde resultaten" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Margin="67,0,67,92" Width="266" Height="58" Background="#FFEE7114" BorderBrush="#FFEE7114" Click="btn_Results_Click"/>
         <TextBlock x:Name="lbl_FirstScoreText" Margin="10,136,10,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="45" Foreground="#FF281C6E" FontSize="18.667" TextAlignment="Center"/>

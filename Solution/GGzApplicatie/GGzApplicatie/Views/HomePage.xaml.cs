@@ -93,7 +93,7 @@ namespace GGzApplicatie.Views
                 UserHelper.tmpAdmin = selectUserInfo.Admin;
             } 
         }
-        public void LoadScoreData()
+        public static void LoadScoreData()
         {
             // Using Sql connection
             using (SQLite.SQLiteConnection difference = new SQLite.SQLiteConnection("GGzDB.db"))
@@ -103,8 +103,12 @@ namespace GGzApplicatie.Views
                      ("select * from tbl_Score where Username = '" + UserHelper.tmpUserName + "' order by date(DateOfScore) Desc limit 2").ToList();
                     try
                     {
+                        List<Model.Score> selectId = difference.Query<Model.Score>
+                         ("select * from tbl_Score order by Id Desc limit 1").ToList();
+                    
+
                         // Fill new sorted on date strings
-                        NewDateScoreHelper.tmpId = selectuserinfoSecond[0].Id;
+                        NewDateScoreHelper.tmpId = selectId[0].Id;
                         NewDateScoreHelper.tmpAGGRScore = selectuserinfoSecond[0].AGGRScore;
                         NewDateScoreHelper.tmpTotalScore = selectuserinfoSecond[0].TotalScore;
                         NewDateScoreHelper.tmpVITAScore = selectuserinfoSecond[0].VITAScore;

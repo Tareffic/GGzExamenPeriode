@@ -37,7 +37,6 @@ namespace GGzApplicatie
         /// </summary>
         public App()
         {
-            
             CopyDatabase();
             this.InitializeComponent();
             this.Suspending += this.OnSuspending; 

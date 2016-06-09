@@ -1,4 +1,5 @@
 ﻿using GGzApplicatie.Helpers;
+using System.Collections.Generic;
 using Windows.Phone.UI.Input;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -15,6 +16,7 @@ namespace GGzApplicatie.Views
         public ResultPage()
         {
             this.InitializeComponent();
+            HomePage.LoadScoreData();
             HardwareButtons.BackPressed += HardwareButtons_BackPressed;
             LoadAllLabelsAndTextboxes();
         }
@@ -22,8 +24,8 @@ namespace GGzApplicatie.Views
         {
             if(UserHelper.HasFirstScore == true && UserHelper.HasSecondScore == false)
             {
-                lbl_FirstScoreText.Text = "De onderstaande score is de uitslag behaald op " + OldDateScoreHelper.tmpDateOfScore.ToString("dd/MMMM/yyyy") + ".";
-                txtb_FirstCount.Text = OldDateScoreHelper.tmpTotalScore.ToString();
+                lbl_FirstScoreText.Text = "De onderstaande score is de uitslag behaald op " + NewDateScoreHelper.tmpDateOfScore.ToString("dd/MMMM/yyyy") + ".";
+                txtb_FirstCount.Text = NewDateScoreHelper.tmpTotalScore.ToString();
             }
             else if (UserHelper.HasFirstScore == true && UserHelper.HasSecondScore == true)
             {
