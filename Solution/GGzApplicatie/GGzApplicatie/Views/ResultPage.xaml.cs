@@ -1,5 +1,6 @@
 ﻿using GGzApplicatie.Helpers;
 using System.Collections.Generic;
+using Windows.Graphics.Display;
 using Windows.Phone.UI.Input;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -18,6 +19,7 @@ namespace GGzApplicatie.Views
             this.InitializeComponent();
             HomePage.LoadScoreData();
             HardwareButtons.BackPressed += HardwareButtons_BackPressed;
+            DisplayInformation.AutoRotationPreferences = DisplayOrientations.Portrait;
             LoadAllLabelsAndTextboxes();
         }
         public void LoadAllLabelsAndTextboxes()

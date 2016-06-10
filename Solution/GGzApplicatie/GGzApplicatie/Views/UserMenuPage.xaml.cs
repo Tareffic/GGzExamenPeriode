@@ -6,6 +6,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Graphics.Display;
 using Windows.Phone.UI.Input;
 using Windows.UI.Popups;
 using Windows.UI.Xaml;
@@ -30,6 +31,7 @@ namespace GGzApplicatie.Views
         {
             this.InitializeComponent();
             HardwareButtons.BackPressed += HardwareButtons_BackPressed;
+            DisplayInformation.AutoRotationPreferences = DisplayOrientations.Portrait;
             LoadWelcome(UserHelper.tmpName, UserHelper.tmpUserName);       
         }
 
@@ -52,6 +54,7 @@ namespace GGzApplicatie.Views
         }
         private void btn_Logout_Click(object sender, RoutedEventArgs e)
         {
+            Frame.GoBack();
         }
 
         private void btn_MyInformation_Click(object sender, RoutedEventArgs e)

@@ -8,6 +8,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Graphics.Display;
 using Windows.Phone.UI.Input;
 using Windows.UI.Popups;
 using Windows.UI.Xaml;
@@ -39,6 +40,7 @@ namespace GGzApplicatie.Views
         public QuestionPage()
         {
             this.InitializeComponent();
+            DisplayInformation.AutoRotationPreferences = DisplayOrientations.Portrait;
             btn_AnswerF.Visibility = Visibility.Collapsed;
             HardwareButtons.BackPressed += HardwareButtons_BackPressed;
            
@@ -98,10 +100,6 @@ namespace GGzApplicatie.Views
 
         }
 
-        private void textBlock2_SelectionChanged(object sender, RoutedEventArgs e)
-        {
-
-        }
 
         private async void btn_NextQuestion_Click(object sender, RoutedEventArgs e)
         {
@@ -144,7 +142,7 @@ namespace GGzApplicatie.Views
                 {
                     btn_Score = 4;
                     CalculateCategoryScore();
-                 //   btn_AnswerE.IsChecked = false;
+                    btn_AnswerE.IsChecked = false;
                 }
                 if (btn_AnswerF.IsChecked == true)
                 {
@@ -159,7 +157,6 @@ namespace GGzApplicatie.Views
             {
                 //save scores to db , dont save WORKscore to total!!
                 scores.TotalScore = (scores.AGGRScore + scores.AGORScore + scores.ANXIScore + scores.COGNScore + scores.MOODScore + scores.SOMAScore + scores.SOPHScore + scores.VITAScore);
-                var test = scores.AGGRScore;
                  //fix last id +=1
                 int newid = NewDateScoreHelper.tmpId += 1;
                 InsertScores(newid, UserHelper.tmpUserName, scores.TotalScore, DateTime.Now, scores.AGORScore, scores.AGORScore, scores.ANXIScore, scores.COGNScore, scores.MOODScore, scores.SOMAScore, scores.SOPHScore, scores.VITAScore, scores.WORKScore);
@@ -167,9 +164,14 @@ namespace GGzApplicatie.Views
             }
 
         }
+
         void HardwareButtons_BackPressed(object sender, BackPressedEventArgs e)
         {
-            Frame.GoBack();
+            if (Frame.CanGoBack)
+            {
+                e.Handled = true;
+                Frame.GoBack();
+            }
         }
         public static void InsertScores(int Id, string Username, int TotalScore, DateTime DateOfScore, int AGGRScore, int AGORScore, int ANXIScore, int COGNScore, int MOODscore, int SOMAScore, int SOPHScore, int VITAScore, int WORKScore)
         {

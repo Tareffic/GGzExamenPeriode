@@ -266,6 +266,28 @@
   </Class>
   <Class Name="SQLite.SQLite3" Collapsed="true">
     <Position X="16.5" Y="3.5" Width="1.5" />
+    <NestedTypes>
+      <Enum Name="SQLite.SQLite3.Result" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>SQLite.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Enum Name="SQLite.SQLite3.ExtendedResult" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>SQLite.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Enum Name="SQLite.SQLite3.ConfigOption" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>SQLite.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Enum Name="SQLite.SQLite3.ColType" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>SQLite.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
     <TypeIdentifier>
       <HashCode>AIJAgUgAAkgALQsCCBlAAQAUYQAAgQAAMAAACICDBAA=</HashCode>
       <FileName>SQLite.cs</FileName>
