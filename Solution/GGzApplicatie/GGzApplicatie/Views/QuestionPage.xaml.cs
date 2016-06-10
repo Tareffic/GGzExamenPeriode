@@ -144,7 +144,7 @@ namespace GGzApplicatie.Views
                 {
                     btn_Score = 4;
                     CalculateCategoryScore();
-                 //   btn_AnswerE.IsChecked = false;
+                    btn_AnswerE.IsChecked = false;
                 }
                 if (btn_AnswerF.IsChecked == true)
                 {
@@ -159,7 +159,6 @@ namespace GGzApplicatie.Views
             {
                 //save scores to db , dont save WORKscore to total!!
                 scores.TotalScore = (scores.AGGRScore + scores.AGORScore + scores.ANXIScore + scores.COGNScore + scores.MOODScore + scores.SOMAScore + scores.SOPHScore + scores.VITAScore);
-                var test = scores.AGGRScore;
                  //fix last id +=1
                 int newid = NewDateScoreHelper.tmpId += 1;
                 InsertScores(newid, UserHelper.tmpUserName, scores.TotalScore, DateTime.Now, scores.AGORScore, scores.AGORScore, scores.ANXIScore, scores.COGNScore, scores.MOODScore, scores.SOMAScore, scores.SOPHScore, scores.VITAScore, scores.WORKScore);
