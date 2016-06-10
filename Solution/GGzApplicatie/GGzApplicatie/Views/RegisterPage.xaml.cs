@@ -2,6 +2,7 @@
 using SQLite;
 using System;
 using System.Linq;
+using Windows.Graphics.Display;
 using Windows.Phone.UI.Input;
 using Windows.UI.Popups;
 using Windows.UI.Xaml;
@@ -26,6 +27,8 @@ namespace GGzApplicatie
             adminInfo = new Model.Admin();
             userinfo = new Model.User();
             HardwareButtons.BackPressed += HardwareButtons_BackPressed;
+            dtp_Birthday.MaxYear = DateTime.Now;
+            DisplayInformation.AutoRotationPreferences = DisplayOrientations.Portrait;
             LoadComboBox();
         }
 

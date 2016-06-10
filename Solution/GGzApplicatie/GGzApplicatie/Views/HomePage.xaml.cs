@@ -14,7 +14,8 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using Windows.UI.Popups;
-using Windows.Phone.UI.Input;  
+using Windows.Phone.UI.Input;
+using Windows.Graphics.Display;  
 
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkID=390556
@@ -30,6 +31,7 @@ namespace GGzApplicatie.Views
         {
             this.InitializeComponent();
             HardwareButtons.BackPressed += HardwareButtons_BackPressed;
+            DisplayInformation.AutoRotationPreferences = DisplayOrientations.Portrait;
         }
 
         private void btn_Login_Click(object sender, RoutedEventArgs e)

@@ -8,6 +8,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Graphics.Display;
 using Windows.Phone.UI.Input;
 using Windows.UI.Popups;
 using Windows.UI.Xaml;
@@ -39,6 +40,7 @@ namespace GGzApplicatie.Views
         public QuestionPage()
         {
             this.InitializeComponent();
+            DisplayInformation.AutoRotationPreferences = DisplayOrientations.Portrait;
             btn_AnswerF.Visibility = Visibility.Collapsed;
             HardwareButtons.BackPressed += HardwareButtons_BackPressed;
            
@@ -98,10 +100,6 @@ namespace GGzApplicatie.Views
 
         }
 
-        private void textBlock2_SelectionChanged(object sender, RoutedEventArgs e)
-        {
-
-        }
 
         private async void btn_NextQuestion_Click(object sender, RoutedEventArgs e)
         {
@@ -166,9 +164,14 @@ namespace GGzApplicatie.Views
             }
 
         }
+
         void HardwareButtons_BackPressed(object sender, BackPressedEventArgs e)
         {
-            Frame.GoBack();
+            if (Frame.CanGoBack)
+            {
+                e.Handled = true;
+                Frame.GoBack();
+            }
         }
         public static void InsertScores(int Id, string Username, int TotalScore, DateTime DateOfScore, int AGGRScore, int AGORScore, int ANXIScore, int COGNScore, int MOODscore, int SOMAScore, int SOPHScore, int VITAScore, int WORKScore)
         {
