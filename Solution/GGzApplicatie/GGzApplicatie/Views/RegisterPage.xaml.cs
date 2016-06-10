@@ -3,6 +3,7 @@ using SQLite;
 using System;
 using System.Linq;
 using System.Text.RegularExpressions;
+using Windows.Graphics.Display;
 using Windows.Phone.UI.Input;
 using Windows.UI.Popups;
 using Windows.UI.Xaml;
@@ -27,6 +28,8 @@ namespace GGzApplicatie
             adminInfo = new Model.Admin();
             userinfo = new Model.User();
             HardwareButtons.BackPressed += HardwareButtons_BackPressed;
+            DisplayInformation.AutoRotationPreferences = DisplayOrientations.Portrait;
+            dtp_Birthday.MaxYear = DateTime.Now;
             LoadComboBox();
         }
 
