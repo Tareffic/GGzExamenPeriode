@@ -12,7 +12,7 @@
     <Grid Background="White">
         <Image x:Name="image" Source="ms-appx:///Assets/GGz_Breburg_Logo.jpg" Margin="0,0,15,488"/>
         <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="85,152,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
-        <TextBox x:Name="txtb_Username" Margin="198,196,15,408" TextWrapping="Wrap" Text="" VerticalAlignment="Stretch" BorderBrush="#FF281C6E" Foreground="#FF281C6E" BorderThickness="1.5,1" SelectionHighlightColor="#FF281C6E" Background="White" MaxLength="12"/>
+        <TextBox x:Name="txtb_Username" Margin="198,197,15,407" TextWrapping="Wrap" Text="" VerticalAlignment="Stretch" BorderBrush="#FF281C6E" Foreground="#FF281C6E" BorderThickness="1.5,1" SelectionHighlightColor="#FF281C6E" Background="White" MaxLength="12" KeyUp="txtb_Username_KeyUp" KeyDown="txtb_Username_KeyDown"/>
         <TextBlock x:Name="lbl_Username" HorizontalAlignment="Left" Margin="10,201,0,0" TextWrapping="Wrap" Text="Gebruikersnaam" VerticalAlignment="Top" Height="32" Width="188" Foreground="#FFEE7114" FontSize="21.333" FontWeight="Bold"/>
         <TextBox x:Name="txtb_Name" Margin="198,254,15,350" TextWrapping="Wrap" Text="" VerticalAlignment="Stretch" BorderBrush="#FF281C6E" Foreground="#FF281C6E" BorderThickness="1.5,1" SelectionHighlightColor="#FF281C6E" Background="White" MaxLength="25"/>
         <TextBlock x:Name="lbl_Name" HorizontalAlignment="Left" Margin="10,259,0,0" TextWrapping="Wrap" Text="Voornaam" VerticalAlignment="Top" Height="32" Width="188" Foreground="#FFEE7114" FontSize="21.333" FontWeight="Bold"/>

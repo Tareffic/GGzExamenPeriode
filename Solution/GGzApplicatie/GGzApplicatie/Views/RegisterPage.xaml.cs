@@ -2,6 +2,7 @@
 using SQLite;
 using System;
 using System.Linq;
+using System.Text.RegularExpressions;
 using Windows.Phone.UI.Input;
 using Windows.UI.Popups;
 using Windows.UI.Xaml;
@@ -46,32 +47,41 @@ namespace GGzApplicatie
 
         private async void btn_RegisterAccount_Click(object sender, RoutedEventArgs e)
         {
-
+            Regex regex = new Regex(@"[a-zA-Z0-9/s]");
             using (var difference = new SQLite.SQLiteConnection("GGzDB.db"))
             {
                 var userlist = difference.Query<Model.User>
                                      ("select Username from tbl_User").ToList();
-                if (txtb_Username.Text != string.Empty)
+                if (regex.IsMatch(txtb_Username.Text) && regex.IsMatch(txtb_Name.Text) && regex.IsMatch(txtb_Surname.Text))
                 {
-                    var user = userlist.Where(x => x.Username == txtb_Username.Text).FirstOrDefault();
-
-                    if (user != null)
+                    if (txtb_Username.Text != string.Empty)
                     {
+                        var user = userlist.Where(x => x.Username == txtb_Username.Text).FirstOrDefault();
 
-                        if (txtb_Username.Text == user.Username)
+                        if (user != null)
                         {
 
-                            MessageDialog msgbox = new MessageDialog("De opgegeven gebruikersnaam is al in gebruik.");
-                            await msgbox.ShowAsync();
+                            if (txtb_Username.Text == user.Username)
+                            {
+
+                                MessageDialog msgbox = new MessageDialog("De opgegeven gebruikersnaam is al in gebruik.");
+                                await msgbox.ShowAsync();
+                            }
+                        }
+                        else if (txtb_Name.Text != string.Empty && txtb_Surname.Text != string.Empty && txtb_Username.Text != string.Empty)
+                        {
+                            insertData(txtb_Name.Text, txtb_Surname.Text, txtb_Username.Text, dtp_Birthday.Date.DateTime, cmb_AdminUsernames.SelectedItem.ToString());
+                            Frame.GoBack();
                         }
                     }
-                    else if (txtb_Name.Text != string.Empty && txtb_Surname.Text != string.Empty && txtb_Username.Text != string.Empty)
-                    {
-                        insertData(txtb_Name.Text, txtb_Surname.Text, txtb_Username.Text, dtp_Birthday.Date.DateTime, cmb_AdminUsernames.SelectedItem.ToString());
-                    }
+                }
+                else
+                {
+                    MessageDialog msgbox = new MessageDialog("Controleer of u geen speciale tekens of spaties gebruikt");
+                    await msgbox.ShowAsync();
                 }
             }
-            Frame.GoBack();
+           
         }
 
         public async static void insertData(string Name, string Surname, string Username, DateTime DateOfBirth, string Admin)
@@ -94,6 +104,16 @@ namespace GGzApplicatie
         {
             MessageDialog msgbox = new MessageDialog("Er is een fout opgetreden bij het registeren. Neem contact op met de systeembeheerder.");
             await msgbox.ShowAsync();
+        }
+
+        private void txtb_Username_KeyUp(object sender, Windows.UI.Xaml.Input.KeyRoutedEventArgs e)
+        {
+
+        }
+
+        private void txtb_Username_KeyDown(object sender, Windows.UI.Xaml.Input.KeyRoutedEventArgs e)
+        {
+
         }
     }
 }
