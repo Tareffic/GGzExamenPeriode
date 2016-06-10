@@ -43,9 +43,7 @@ namespace GGzApplicatie.Views
             DisplayInformation.AutoRotationPreferences = DisplayOrientations.Portrait;
             btn_AnswerF.Visibility = Visibility.Collapsed;
             HardwareButtons.BackPressed += HardwareButtons_BackPressed;
-           
             GetNextQuestion();
-
         }
 
         public void GetNextQuestion()
@@ -59,12 +57,9 @@ namespace GGzApplicatie.Views
                         // Create list from database to model
                         List<Model.Question> selectuserinfo = difference.Query<Model.Question>
                                          ("select * from tbl_Question where Id = '" + QuestionSessionId + "' ").ToList();
-                        // loads the question with same QuestionId from QuestionSessionId.
-                        //  Model.Question s = selectuserinfo.Select(x => x.QuestionId == QuestionSessionId).FirstOrDefault();
 
                         txtb_LoadQuestion.Text = selectuserinfo[0].QuestionString;
                         currentCategory = selectuserinfo[0].Category;
-
                         txtb_QuestionProgress.Text = "Vraag " + QuestionSessionId.ToString() + "/" + MaxQuestions + ".";
 
                         
@@ -97,9 +92,7 @@ namespace GGzApplicatie.Views
 
                 }
             }
-
         }
-
 
         private async void btn_NextQuestion_Click(object sender, RoutedEventArgs e)
         {
@@ -191,12 +184,6 @@ namespace GGzApplicatie.Views
                 statement.ExecuteNonQuery();
             }
         }
-        
-        private void Answer_Checked(object sender, RoutedEventArgs e)
-        {
-        }
-
-
         public void CalculateCategoryScore()
         {
 
@@ -229,7 +216,6 @@ namespace GGzApplicatie.Views
                 case "WORKScore":
                     scores.WORKScore += btn_Score;
                     break;
-
             }
         }
     }
